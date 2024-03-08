@@ -6,7 +6,7 @@ interface MongooseConnection{
     conn: Mongoose | null;
     promise: Promise<Mongoose> | null;
 }
-
+console.log('CALLED FOR CONNECTIONS')
 let cached: MongooseConnection= (global as any).mongoose
 
 if(!cached){
@@ -28,5 +28,6 @@ export const connectToDatabase= async()=>{
         }) 
 
     cached.conn= await cached.promise
+    console.log(cached)
     return cached.conn;
 }
